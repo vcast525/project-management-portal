@@ -74,6 +74,26 @@ def get_tasks() -> list[tuple]:
         cursor = connection.execute(query)
         return cursor.fetchall()
 
+def get_task_by_id(task_id: int) -> tuple | None:
+    """Retrieve a single task record by task ID."""
+    query = """
+    SELECT
+        task_id,
+        project_id,
+        task_name,
+        description,
+        priority,
+        status,
+        assigned_to,
+        due_date,
+        created_date
+    FROM tasks
+    WHERE task_id = ?;
+    """
+
+    with create_connection() as connection:
+        cursor = connection.execute(query, (task_id,))
+        return cursor.fetchone()
 
 def update_task(
     task_id: int,
