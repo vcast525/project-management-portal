@@ -54,6 +54,23 @@ def get_projects() -> list[tuple]:
         cursor = connection.execute(query)
         return cursor.fetchall()
 
+def get_project_by_id(project_id: int) -> tuple | None:
+    """Retrieve a single project record by project ID."""
+    query = """
+    SELECT
+        project_id,
+        project_name,
+        description,
+        status,
+        created_date
+    FROM projects
+    WHERE project_id = ?;
+    """
+
+    with create_connection() as connection:
+        cursor = connection.execute(query, (project_id,))
+        return cursor.fetchone()
+
 def update_project(
     project_id: int,
     project_name: str,
