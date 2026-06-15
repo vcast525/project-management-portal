@@ -19,15 +19,13 @@ This project showcases practical software engineering skills including:
 ⸻
 ## 🏗️ Architecture
 
-```text
-Streamlit Frontend
-        ↓
-FastAPI REST API
-        ↓
-Service Layer
-        ↓
+Streamlit Frontend<br>
+⬇️<br>
+FastAPI REST API<br>
+⬇️<br>
+Service Layer<br>
+⬇️<br>
 SQLite Database
-```
 
 ⸻
 ## 📸 Application Screenshots
