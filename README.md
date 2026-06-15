@@ -19,8 +19,6 @@ This project showcases practical software engineering skills including:
 ⸻
 ## 🏗️ Architecture
 
-## 🏗️ Architecture
-
 **Streamlit Frontend**  
 ↓  
 **FastAPI REST API**  
