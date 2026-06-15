@@ -6,14 +6,37 @@ from pydantic import BaseModel
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from src.services.project_service import get_projects, get_project_by_id
-from src.services.task_service import create_task, get_task_by_id, get_tasks
+from src.services.project_service import (
+    create_project,
+    delete_project,
+    get_project_by_id,
+    get_projects,
+    update_project,
+)
+
+from src.services.task_service import (
+    create_task,
+    delete_task,
+    get_task_by_id,
+    get_tasks,
+    update_task,
+)
 
 app = FastAPI(
     title="Project Management Portal API",
     description="REST API for retrieving project and task data from the Project Management Portal.",
     version="1.0.0",
 )
+
+class ProjectCreate(BaseModel):
+    project_name: str
+    description: str
+    status: str
+
+class ProjectUpdate(BaseModel):
+    project_name: str
+    description: str
+    status: str
 
 class TaskCreate(BaseModel):
     project_id: int
@@ -24,14 +47,37 @@ class TaskCreate(BaseModel):
     assigned_to: str
     due_date: str
 
-@app.get("/")
+class TaskUpdate(BaseModel):
+    project_id: int
+    task_name: str
+    description: str
+    priority: str
+    status: str
+    assigned_to: str
+    due_date: str
+
+@app.get("/", tags=["Health Check"])
 def root() -> dict:
     """Root endpoint for API health check."""
     return {
         "message": "Project Management Portal API is running"
     }
 
-@app.get("/projects")
+@app.post("/projects", tags=["Projects"])
+def create_project_endpoint(project: ProjectCreate) -> dict:
+    """Create a new project record."""
+    create_project(
+        project_name=project.project_name,
+        description=project.description,
+        status=project.status,
+    )
+
+    return {
+        "message": "Project created successfully",
+        "project_name": project.project_name,
+    }
+
+@app.get("/projects", tags=["Projects"])
 def read_projects() -> list[dict]:
     """Retrieve all project records."""
     projects = get_projects()
@@ -47,7 +93,7 @@ def read_projects() -> list[dict]:
         for project in projects
     ]
 
-@app.get("/projects/{project_id}")
+@app.get("/projects/{project_id}", tags=["Projects"])
 def read_project(project_id: int) -> dict:
     """Retrieve a single project record by project ID."""
     project = get_project_by_id(project_id)
@@ -65,7 +111,32 @@ def read_project(project_id: int) -> dict:
         "created_date": project[4],
     }
 
-@app.post("/tasks")
+@app.put("/projects/{project_id}", tags=["Projects"])
+def update_project_endpoint(project_id: int, project: ProjectUpdate) -> dict:
+    """Update an existing project record."""
+    update_project(
+        project_id=project_id,
+        project_name=project.project_name,
+        description=project.description,
+        status=project.status,
+    )
+
+    return {
+        "message": "Project updated successfully",
+        "project_id": project_id,
+    }
+
+@app.delete("/projects/{project_id}", tags=["Projects"])
+def delete_project_endpoint(project_id: int) -> dict:
+    """Delete an existing project record."""
+    delete_project(project_id)
+
+    return {
+        "message": "Project deleted successfully",
+        "project_id": project_id,
+    }
+
+@app.post("/tasks", tags=["Tasks"])
 def create_task_endpoint(task: TaskCreate) -> dict:
     """Create a new task record."""
     create_task(
@@ -83,7 +154,7 @@ def create_task_endpoint(task: TaskCreate) -> dict:
         "task_name": task.task_name,
     }
 
-@app.get("/tasks")
+@app.get("/tasks", tags=["Tasks"])
 def read_tasks() -> list[dict]:
     """Retrieve all task records."""
     tasks = get_tasks()
@@ -102,7 +173,7 @@ def read_tasks() -> list[dict]:
         }
         for task in tasks
     ]
-@app.get("/tasks/{task_id}")
+@app.get("/tasks/{task_id}", tags=["Tasks"])
 def read_task(task_id: int) -> dict:
     """Retrieve a single task record by task ID."""
     task = get_task_by_id(task_id)
@@ -122,4 +193,32 @@ def read_task(task_id: int) -> dict:
         "assigned_to": task[6],
         "due_date": task[7],
         "created_date": task[8],
+    }
+
+@app.put("/tasks/{task_id}", tags=["Tasks"])
+def update_task_endpoint(task_id: int, task: TaskUpdate) -> dict:
+    """Update an existing task record."""
+    update_task(
+        task_id=task_id,
+        task_name=task.task_name,
+        description=task.description,
+        priority=task.priority,
+        status=task.status,
+        assigned_to=task.assigned_to,
+        due_date=task.due_date,
+    )
+
+    return {
+        "message": "Task updated successfully",
+        "task_id": task_id,
+    }
+
+@app.delete("/tasks/{task_id}", tags=["Tasks"])
+def delete_task_endpoint(task_id: int) -> dict:
+    """Delete an existing task record."""
+    delete_task(task_id)
+
+    return {
+        "message": "Task deleted successfully",
+        "task_id": task_id,
     }
