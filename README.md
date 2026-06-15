@@ -1,16 +1,23 @@
-Project Management Portal
+# 📋 Project Management Portal
 
-Overview
+## Overview
 
-Project Management Portal is a full-stack software engineering application designed to simulate a real-world project and task management platform.
+The Project Management Portal is a full-stack software engineering application designed to simulate a real-world project and task management platform.
 
-The application enables end users to create, view, update, and delete projects and tasks through an intuitive web interface while demonstrating modern software engineering architecture, REST API development, database integration, and frontend-to-backend communication.
+The application enables users to create, view, update, and delete projects and tasks through an intuitive web interface while demonstrating modern software engineering architecture, REST API development, database integration, and frontend-to-backend communication.
 
-This project was developed to showcase practical software engineering skills including application architecture, API development, CRUD operations, database design, and GitHub development workflows.
+This project showcases practical software engineering skills including:
+
+* Application Architecture
+* REST API Development
+* Database Design
+* CRUD Operations
+* Frontend Development
+* Backend Development
+* GitHub Development Workflows
 
 ⸻
-
-Architecture
+## 🏗️ Architecture
 
 Streamlit Frontend
         ↓
@@ -21,74 +28,76 @@ Service Layer
 SQLite Database
 
 ⸻
-## Application Screenshots
+## 📸 Application Screenshots
 
 ### Streamlit Dashboard
 
-![Streamlit Dashboard](docs/images/Streamlit Dashboard.png)
+![Streamlit Dashboard](docs/images/streamlit-dashboard.png)
 
 ### Create Project Form
 
-![Create Project Form](docs/images/Create Project Form.png)
+![Create Project Form](docs/images/create-project-form.png)
 
 ### Create Task Form
 
-![Create Task Form](docs/images/Create Task Form.png)
+![Create Task Form](docs/images/create-task-form.png)
 
 ### Swagger API Documentation
 
-![Swagger API Documentation](docs/images/Swagger UI.png)
+![Swagger API Documentation](docs/images/swagger-ui.png)
 ⸻
 
-Key Features
+## 🚀 Key Features
 
-Project Management
+### Project Management
 
-* Create projects
-* View projects
-* Update project information and status
-* Delete projects through API endpoints
+* Create Projects
+* View Projects
+* Update Project Information
+* Update Project Status
+* Delete Projects
 
-Task Management
+### Task Management
 
-* Create tasks
-* View tasks
-* Update task information and status
-* Delete tasks
+* Create Tasks
+* View Tasks
+* Update Task Information
+* Update Task Status
+* Delete Tasks
 
-Dashboard Functionality
+### Dashboard Functionality
 
-* Total project metrics
-* Total task metrics
-* Project status tracking
-* Task status tracking
-* Interactive Streamlit user interface
+* Total Project Metrics
+* Total Task Metrics
+* Project Status Tracking
+* Task Status Tracking
+* Interactive Streamlit User Interface
 
-API Functionality
+### API Functionality
 
-* RESTful API architecture
-* FastAPI endpoints
-* Swagger/OpenAPI documentation
-* JSON request and response handling
+* RESTful API Architecture
+* FastAPI Endpoints
+* Swagger / OpenAPI Documentation
+* JSON Request and Response Handling
 
 ⸻
 
-Technology Stack
+## 💻 Technology Stack
 
-Frontend
+### Frontend
 
 * Streamlit
 
-Backend
+### Backend
 
 * Python
 * FastAPI
 
-Database
+### Database
 
 * SQLite
 
-Development Tools
+### Development Tools
 
 * Git
 * GitHub
@@ -97,29 +106,30 @@ Development Tools
 
 ⸻
 
-CRUD Operations
+## 🔄 CRUD Operations
 
-Projects
+### Projects
 
-Operation	Endpoint
-Create	POST /projects
-Read	GET /projects
-Read by ID	GET /projects/{project_id}
-Update	PUT /projects/{project_id}
-Delete	DELETE /projects/{project_id}
+| Operation | Endpoint |
+| --- | --- |
+| Create | POST /projects |
+| Read | GET /projects |
+| Read by ID | GET /projects/{project_id} |
+| Update | PUT /projects/{project_id} |
+| Delete | DELETE /projects/{project_id} |
 
-Tasks
+### Tasks
 
-Operation	Endpoint
-Create	POST /tasks
-Read	GET /tasks
-Read by ID	GET /tasks/{task_id}
-Update	PUT /tasks/{task_id}
-Delete	DELETE /tasks/{task_id}
-
+| Operation | Endpoint |
+| --- | --- |
+| Create | POST /tasks |
+| Read | GET /tasks |
+| Read by ID | GET /tasks/{task_id} |
+| Update | PUT /tasks/{task_id} |
+| Delete | DELETE /tasks/{task_id} |
 ⸻
 
-Skills Demonstrated
+## 🎯 Skills Demonstrated
 
 * Software Engineering
 * Full-Stack Development
@@ -136,7 +146,7 @@ Skills Demonstrated
 
 ⸻
 
-Project Highlights
+## ⭐ Project Highlights
 
 * Designed and implemented a relational SQLite database
 * Developed reusable service-layer business logic
@@ -149,7 +159,7 @@ Project Highlights
 
 ⸻
 
-Future Enhancements
+## 🔮 Future Enhancements
 
 * User Authentication
 * Role-Based Access Control
@@ -162,10 +172,10 @@ Future Enhancements
 
 ⸻
 
-Status
+✅ Status
 
 Version 2.0 — Complete
 
 Project Status: ✅ Complete
 
-This project demonstrates a complete full-stack software engineering application utilizing modern development practices and end-user functionality.
+This project demonstrates a complete full-stack software engineering application utilizing modern development practices, REST APIs, database integration, and end-user CRUD functionality.
