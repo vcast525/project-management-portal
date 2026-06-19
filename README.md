@@ -29,6 +29,7 @@ Service Layer<br>
 SQLite Database
 </p>
 ⸻
+
 ## 📸 Application Screenshots
 
 ### Streamlit Dashboard
